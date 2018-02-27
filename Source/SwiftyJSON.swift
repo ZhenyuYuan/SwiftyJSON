@@ -330,6 +330,7 @@ public struct JSON {
     default:
         return String(number.int64Value)
     }
+    }
 
     fileprivate func setObjectHelper(_ newValue: Any) -> (Type, Any) {
     	var type: Type
@@ -379,7 +380,6 @@ public struct JSON {
         return (type, value)
     }
 #endif
-}
 
 /// Private method to unwarp an object recursively
 private func unwrap(_ object: Any) -> Any {
