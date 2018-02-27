@@ -321,18 +321,18 @@ public struct JSON {
 
 #if os(Linux)
     fileprivate static func stringFromNumber(_ number: NSNumber) -> String {
-    let type = CFNumberGetType(unsafeBitCast(number, to: CFNumber.self))
-    switch type {
-    case kCFNumberFloat32Type:
-        return String(number.floatValue)
-    case kCFNumberFloat64Type:
-        return String(number.doubleValue)
-    default:
-        return String(number.int64Value)
-    }
+    	let type = CFNumberGetType(unsafeBitCast(number, to: CFNumber.self))
+    	switch type {
+    	case kCFNumberFloat32Type:
+        	return String(number.floatValue)
+    	case kCFNumberFloat64Type:
+        	return String(number.doubleValue)
+    	default:
+        	return String(number.int64Value)
+    	}
     }
 
-    fileprivate func setObjectHelper(_ newValue: Any) -> (Type, Any) {
+    func setObjectHelper(_ newValue: Any) -> (Type, Any) {
     	var type: Type
     	var value: Any
         if let bool = newValue as? Bool {
@@ -380,6 +380,7 @@ public struct JSON {
         return (type, value)
     }
 #endif
+}
 
 /// Private method to unwarp an object recursively
 private func unwrap(_ object: Any) -> Any {
